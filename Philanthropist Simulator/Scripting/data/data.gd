@@ -5,3 +5,9 @@ extends Resource
 
 ## Current cash
 @export var cash : int = 0
+
+@export var goodwill : int = 0
+
+@export var up_01_level : int = 0
+
+@export var up_02_level : int = 0

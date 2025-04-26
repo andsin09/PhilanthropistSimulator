@@ -25,7 +25,7 @@ func generate_cash() -> void:
 
 ##what runs on clicking the dollar
 func _on_button_pressed() -> void:
-	generate_cash()
+	CashHandler.ref.cash_clicker()
 
 
 ## navigate the user if requested

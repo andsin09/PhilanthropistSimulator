@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfw82nt5krvhm"]
+[gd_scene load_steps=7 format=3 uid="uid://bfw82nt5krvhm"]
 
 [ext_resource type="PackedScene" uid="uid://bh3i8jb0sv5cl" path="res://Scenes/Versions/PhilSim V1/phil_sim_v_1.tscn" id="1_eup8d"]
 [ext_resource type="Script" path="res://Scenes/ui/ui.gd" id="1_yuno2"]
 [ext_resource type="Script" path="res://Scenes/ui/cash_label.gd" id="2_bid0s"]
 [ext_resource type="PackedScene" uid="uid://3fcm1na7eswl" path="res://Scenes/Versions/Helpers/helper_v_1.tscn" id="3_4qeql"]
-[ext_resource type="PackedScene" uid="uid://moy553s8vrw2" path="res://Scenes/Versions/Upgrades/upgrades_v_1.tscn" id="5_kmjp2"]
+[ext_resource type="PackedScene" uid="uid://bvgikyf22twds" path="res://Scenes/Versions/Upgrades/prototype_upgrades.tscn" id="5_pise4"]
+[ext_resource type="PackedScene" uid="uid://bv3qalsthpxo8" path="res://Scenes/Versions/Upgrades/goodwill_shop.tscn" id="7_6ippf"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -58,6 +59,7 @@ layout_mode = 2
 text = "Easy Assist: Generator"
 
 [node name="UpgradesLink" type="LinkButton" parent="HBoxContainer/Left/VBoxContainer/Navigation/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 0.005)
 layout_mode = 2
 text = "Go to Upgrades"
 
@@ -83,8 +85,7 @@ layout_mode = 2
 
 [node name="cash label" type="Label" parent="HBoxContainer/Left/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Cash: 0
-"
+text = "Cash: 0"
 script = ExtResource("2_bid0s")
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
@@ -105,9 +106,13 @@ user_interface = NodePath("../../..")
 layout_mode = 1
 user_interface = NodePath("../../..")
 
-[node name="UpgradesV1" parent="HBoxContainer/Main" node_paths=PackedStringArray("user_interface") instance=ExtResource("5_kmjp2")]
+[node name="PrototypeUpgrades" parent="HBoxContainer/Main" node_paths=PackedStringArray("user_interface") instance=ExtResource("5_pise4")]
 layout_mode = 1
 screen = 2
+user_interface = NodePath("../../..")
+
+[node name="GoodwillShop" parent="HBoxContainer/Main" node_paths=PackedStringArray("user_interface") instance=ExtResource("7_6ippf")]
+layout_mode = 1
 user_interface = NodePath("../../..")
 
 [connection signal="pressed" from="HBoxContainer/Left/VBoxContainer/Navigation/MarginContainer/VBoxContainer/ClickerLink" to="." method="_on_clicker_link_pressed"]

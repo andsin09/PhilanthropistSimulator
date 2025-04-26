@@ -6,7 +6,7 @@ extends Control
 enum Screens {
 	CLICKER_V2,
 	HELPER_V2,
-	UPGRADES_V1,
+	UPGRADES_V4,
 }
 
 ## the signal used to navigate
@@ -22,4 +22,6 @@ func _on_assist_link_pressed():
 
 
 func _on_upgrades_link_pressed():
-	navigating_queued.emit(Screens.UPGRADES_V1)
+	navigating_queued.emit(Screens.UPGRADES_V4)
+
+
