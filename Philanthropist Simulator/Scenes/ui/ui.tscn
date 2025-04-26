@@ -1,0 +1,115 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfw82nt5krvhm"]
+
+[ext_resource type="PackedScene" uid="uid://bh3i8jb0sv5cl" path="res://Scenes/Versions/PhilSim V1/phil_sim_v_1.tscn" id="1_eup8d"]
+[ext_resource type="Script" path="res://Scenes/ui/ui.gd" id="1_yuno2"]
+[ext_resource type="Script" path="res://Scenes/ui/cash_label.gd" id="2_bid0s"]
+[ext_resource type="PackedScene" uid="uid://3fcm1na7eswl" path="res://Scenes/Versions/Helpers/helper_v_1.tscn" id="3_4qeql"]
+[ext_resource type="PackedScene" uid="uid://moy553s8vrw2" path="res://Scenes/Versions/Upgrades/upgrades_v_1.tscn" id="5_kmjp2"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yuno2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Navigation" type="Control" parent="HBoxContainer/Left/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Left/VBoxContainer/Navigation"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left/VBoxContainer/Navigation/MarginContainer"]
+layout_mode = 2
+
+[node name="ClickerLink" type="LinkButton" parent="HBoxContainer/Left/VBoxContainer/Navigation/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Clicker"
+
+[node name="AssistLink" type="LinkButton" parent="HBoxContainer/Left/VBoxContainer/Navigation/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Easy Assist: Generator"
+
+[node name="UpgradesLink" type="LinkButton" parent="HBoxContainer/Left/VBoxContainer/Navigation/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Go to Upgrades"
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Left/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Left/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Resources" type="Control" parent="HBoxContainer/Left/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/Left/VBoxContainer/Resources"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left/VBoxContainer/Resources/MarginContainer"]
+layout_mode = 2
+
+[node name="cash label" type="Label" parent="HBoxContainer/Left/VBoxContainer/Resources/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cash: 0
+"
+script = ExtResource("2_bid0s")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Main" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PhilSim V1" parent="HBoxContainer/Main" node_paths=PackedStringArray("user_interface") instance=ExtResource("1_eup8d")]
+layout_mode = 1
+user_interface = NodePath("../../..")
+
+[node name="HelperV1" parent="HBoxContainer/Main" node_paths=PackedStringArray("user_interface") instance=ExtResource("3_4qeql")]
+layout_mode = 1
+user_interface = NodePath("../../..")
+
+[node name="UpgradesV1" parent="HBoxContainer/Main" node_paths=PackedStringArray("user_interface") instance=ExtResource("5_kmjp2")]
+layout_mode = 1
+screen = 2
+user_interface = NodePath("../../..")
+
+[connection signal="pressed" from="HBoxContainer/Left/VBoxContainer/Navigation/MarginContainer/VBoxContainer/ClickerLink" to="." method="_on_clicker_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left/VBoxContainer/Navigation/MarginContainer/VBoxContainer/AssistLink" to="." method="_on_assist_link_pressed"]
+[connection signal="pressed" from="HBoxContainer/Left/VBoxContainer/Navigation/MarginContainer/VBoxContainer/UpgradesLink" to="." method="_on_upgrades_link_pressed"]
